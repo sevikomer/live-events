@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -9,9 +10,9 @@ function Footer() {
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam minima odio at veritatis asperiores hic earum ex pariatur unde placeat.</p>
         </li>
         <li className='basis-1/3 text-left'>
-          <h3 className='text-orange text-xl font-bold pt-4 pb-2'>INFOS PRATIQUES & FAQ</h3>
+          <h3 className='text-orange hover:text-white text-xl font-bold pt-4 pb-2'><Link to="/faq" className=''>INFOS PRATIQUES & FAQ</Link></h3>
           <h3 className='text-orange text-xl font-bold pt-4 pb-2'>PARTENAIRES</h3>
-          <h3 className='text-orange text-xl font-bold pt-4 pb-2'>RESEAUX SOCIAUX</h3>
+          <h3 className='text-orange text-xl font-bold pt-4 pb-2'><Link to="/reseaux">RESEAUX SOCIAUX</Link></h3>
         </li>
         <li className='basis-1/3 text-left'>
           <h3 className='text-orange text-xl font-bold pt-4 pb-4'>CONTACT</h3>

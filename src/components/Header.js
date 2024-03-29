@@ -25,7 +25,7 @@ function Header() {
           </li>
         </ul>
         <div className='m-1 p-3'>
-          <Link to="/" className='text-orange font-extrabold text-4xl'>LIVE EVENTS</Link>
+          <Link to="/" className='text-orange hover:text-white font-extrabold text-4xl'>LIVE EVENTS</Link>
         </div>
       </div>
       <nav className='flex gap-8 text-xl lg:hidden'>
