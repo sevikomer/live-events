@@ -13,8 +13,8 @@ function Home() {
       <div className='text-center opacity-50'>
         <img src={'/images/photo-accueil.jpg'} alt='accueil1' />
       </div>
-      <Link to="/programmation" className='hover:bg-orange text-white border-solid 
-     border-white p-2 lg:text-5xl md:text-3xl sm:text-2xl text-xl absolute z-10 bottom-1/3 left-1/3 rounded'>PLUS D'INFORMATIONS</Link>
+      <Link to="/programmation" className='hover:bg-orange text-white border-solid border-2
+     border-white p-4 lg:text-5xl md:text-3xl sm:text-2xl text-xl absolute z-10 bottom-1/3 left-1/3 rounded'>PLUS D'INFORMATIONS</Link>
     </div>
 
   )

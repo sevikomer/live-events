@@ -7,6 +7,7 @@ import Billetterie from './components/Billetterie'
 import Carte from './components/Carte'
 import Faq from './components/Faq'
 import Reseaux from './components/Reseaux'
+import Partenaires from './components/Partenaires'
 
 
 
@@ -21,7 +22,7 @@ function AppRoutes(posts) {
         <Route path="/carte" element={<Carte posts={posts} />} />
         <Route path="/reseaux" element={<Reseaux posts={posts} />} />
         <Route path="/faq" element={<Faq posts={posts} />} />
-
+        <Route path="/partenaires" element={<Partenaires posts={posts} />} />
       </Routes>
     </div>
   )

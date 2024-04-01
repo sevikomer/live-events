@@ -16,8 +16,8 @@ export default function Informations(posts) {
     console.log(posts);
 
     return (
-        <>
-            <h1 className='text-white bg-black text-6xl font-extrabold text-center pt-2'>INFORMATIONS</h1>
-        </>
+        <div className='text-white bg-black p-8'>
+            <h1 className='text-6xl font-extrabold text-center pt-2'>INFORMATIONS</h1>
+        </div>
     )
 }
