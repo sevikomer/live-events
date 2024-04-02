@@ -17,7 +17,7 @@ export default function Informations(posts) {
 
     return (
         <div className='text-white bg-black p-8'>
-            <h1 className='text-6xl font-extrabold text-center pt-2'>INFORMATIONS</h1>
+            <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>INFORMATIONS</h1>
         </div>
     )
 }

@@ -2,8 +2,8 @@ import React from 'react'
 
 function Faq() {
     return (
-        <div className='text-white bg-black p-8'>
-            <h1 className='text-6xl font-extrabold text-center pt-2'>INFOS PRATIQUES & FAQ</h1>
+        <div className='text-white text-justify bg-black p-8'>
+            <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>INFOS PRATIQUES & FAQ</h1>
             <ul>
                 <li className='mt-8'>
                     <h3 className='text-xl font-bold'>⛺ Où dormir ?</h3>

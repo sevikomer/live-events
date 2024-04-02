@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { BrowserRouter } from 'react-router-dom';
@@ -30,7 +29,8 @@ function App() {
         <AppRoutes posts={posts} />
         <Footer />
       </BrowserRouter>
-    </div >
+
+    </div>
   );
 }
 

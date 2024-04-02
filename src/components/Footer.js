@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className='lg:flex sm:block pb-1 bg-black text-white'>
+    <div className='lg:flex justify-center sm:block pb-1 bg-black text-white'>
       <ul className='lg:flex sm:block justify-start gap-10 p-1'>
         <li className='basis-1/3 text-left'>
           <h3 className='text-orange text-xl font-bold pt-4 pb-4'>LIVE EVENTS</h3>

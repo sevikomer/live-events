@@ -19,25 +19,12 @@ function FilterInput({ onChange, checked, id, value, label, name }) {
   )
 }
 
-function FilterSelect({ label, id, divClassName, onChange, options }) {
-  return (
-    <div className={divClassName}>
-      <label htmlFor={id} className='lg:text-white md:text-brown'>{label} </label>
-      <select name={id} id={id} onChange={onChange}>
-        {options.map((option) => (
-          <option key={option.label} value={option.value}>{option.label}</option>
-        ))}
-      </select>
-    </div>
-  )
-}
 
-
-function Filter({ selectedCategories, resetSelectedCategories, setSelectedCategories, setMinPrice, setMaxPrice, setMinNote, setMaxNote }) {
+function Filter({ setSelectedCategories, resetSelectedCategories, selectedCategories }) {
 
   const [isCategoryOpen, setIsCategoryOpen] = useState(true)
-  const [isPriceOpen, setIsPriceOpen] = useState(true)
-  const [isNoteOpen, setIsNoteOpen] = useState(true)
+
+
 
   return (
     <fieldset className='mt-20 p-2 pr-20 lg:bg-orange md:bg-white'>
@@ -57,126 +44,43 @@ function Filter({ selectedCategories, resetSelectedCategories, setSelectedCatego
               onChange={() => resetSelectedCategories()}
             />
             <FilterInput
-              id="whiteChocolate"
-              name="whiteChocolate"
-              value="blanc"
-              label="Chocolat blanc"
+              id="buvette"
+              name="buvette"
+              value="buvette"
+              label="buvette"
               onChange={e => setSelectedCategories(e.target.value)}
             />
             <FilterInput
-              id="milkChocolate"
-              name="milkChocolate"
-              value="lait"
-              label="Chocolat au lait"
+              id="restauration"
+              name="restauration"
+              value="restauration"
+              label="restauration"
               onChange={e => setSelectedCategories(e.target.value)}
             />
             <FilterInput
-              id="blackChocolate"
-              name="blackChocolate"
-              value="noir"
-              label="Chocolat noir"
+              id="scene"
+              name="scene"
+              value="scene"
+              label="scene noir"
               onChange={e => setSelectedCategories(e.target.value)}
             />
             <FilterInput
-              id="nut"
-              name="nut"
-              value="noix"
-              label="Noix/Noisette"
+              id="shop"
+              name="shop"
+              value="shop"
+              label="shop"
               onChange={e => setSelectedCategories(e.target.value)}
             />
             <FilterInput
-              id="fruit"
-              name="fruit"
-              value="fruit"
-              label="Fruit"
-              onChange={e => setSelectedCategories(e.target.value)}
-            />
-            <FilterInput
-              id="caramel"
-              name="caramel"
-              value="caramel"
-              label="Caramel"
-              onChange={e => setSelectedCategories(e.target.value)}
-            />
-            <FilterInput
-              id="liquor"
-              name="liquor"
-              value="liqueur"
-              label="Liqueur"
+              id="wc"
+              name="wc"
+              value="wc"
+              label="wc"
               onChange={e => setSelectedCategories(e.target.value)}
             />
           </form>
         </div>
       </section>
-      <div className='pt-4'>
-        <h2 className='text-yellow pb-2 underline font-semibold'>
-          Prix
-          <button onClick={() => setIsPriceOpen((prev) => !prev)}>
-            +
-          </button>
-        </h2>
-        <FilterSelect
-          divClassName={isPriceOpen ? "showFilter" : "hideFilter"}
-          label="Prix min"
-          id="minPrice"
-          options={[
-            { label: "1€", value: "1" },
-            { label: "5€", value: "5" },
-            { label: "10€", value: "10" },
-            { label: "15€", value: "15" },
-            { label: "20€", value: "20" },
-          ]}
-          onChange={e => setMinPrice(e.target.value)}
-        />
-        <FilterSelect
-          divClassName={isPriceOpen ? "showFilter" : "hideFilter"}
-          label="Prix max"
-          id="maxPrice"
-          options={[
-            { label: "20€", value: "20" },
-            { label: "15€", value: "15" },
-            { label: "10€", value: "10" },
-            { label: "5€", value: "5" },
-            { label: "1€", value: "1" },
-          ]}
-          onChange={e => setMaxPrice(e.target.value)}
-        />
-      </div>
-      <div className='pt-4'>
-        <h2 className='text-yellow pb-2 underline font-semibold'>Note
-          <button onClick={() => setIsNoteOpen((prev) => !prev)}>
-            +
-          </button>
-        </h2>
-        <FilterSelect
-          divClassName={isNoteOpen ? "showFilter" : "hideFilter"}
-          label="Note min"
-          id="minNote"
-          options={[
-            { label: "0", value: "0" },
-            { label: "1", value: "1" },
-            { label: "2", value: "2" },
-            { label: "3", value: "3" },
-            { label: "4", value: "4" },
-            { label: "5", value: "5" },
-          ]}
-          onChange={e => setMinNote(e.target.value)}
-        />
-        <FilterSelect
-          divClassName={isNoteOpen ? "showFilter" : "hideFilter"}
-          label="Note max"
-          id="maxNote"
-          options={[
-            { label: "5", value: "5" },
-            { label: "4", value: "4" },
-            { label: "3", value: "3" },
-            { label: "2", value: "2" },
-            { label: "1", value: "1" },
-            { label: "0", value: "0" },
-          ]}
-          onChange={e => setMaxNote(e.target.value)}
-        />
-      </div>
       <style>{`
       .hideFilter {
         display: none;

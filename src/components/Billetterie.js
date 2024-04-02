@@ -2,9 +2,9 @@ import React from 'react'
 
 function Billetterie() {
     return (
-        <>
-            <h1 className='text-white bg-black text-6xl font-extrabold text-center p-8'>BILLETTERIE</h1>
-        </>
+        <div className='text-white bg-black p-8'>
+            <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>BILLETTERIE</h1>
+        </div>
     )
 }
 
