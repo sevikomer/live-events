@@ -10,8 +10,9 @@ import { useEffect, useState, useRef, useCallback } from "react";
 
 type Point = google.maps.LatLngLiteral & { key: string } & { name:string } & {category:string};
 type Props = {
-  selectedCategory: string;
-  onSelect(category:string):void;
+  filteredList;
+  selectedCategory;
+  onSelect(category);
   points: Point[];
   icon 
 };
@@ -50,9 +51,11 @@ const Markers = ({ selectedCategory, points, icon}: Props ) => {
     });
   });
 
+
   const filteredList = selectedCategory
   ? points.filter((point) => point.category.includes(selectedCategory))
   : points;
+
   /*const [selectedCategories, setSelectedCategories] = useState(points);
   const filteredList = useMemo(getFilteredList, [selectedCategories, icon, open, setMarkerRef, points]);*/
 

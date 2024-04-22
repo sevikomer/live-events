@@ -6,7 +6,7 @@ import {
     Pin,
     InfoWindow,
 } from "@vis.gl/react-google-maps";
-import {useState} from "react";
+import {useState, useMemo} from "react";
 import Markers from './Markers.tsx';
 import Filter from './Filter.js';
 import scenes from "../data/scenes.ts";
@@ -19,17 +19,19 @@ type Point = google.maps.LatLngLiteral & { key: string } & { name:string } & {ca
 type Props = {
   onSelect(category:string):void;
   points: Point[];
+  icon;
 };
 
-const Carte = ({ onSelect, points}: Props ) => {
+const Carte = ({ onSelect, points, icon}: Props ) => {
    
-    const [selectedCategory, setSelectedCategory] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState([]);
 
-    const position = { lat: 48.862117, lng: 2.237992 };
+    const position = { lat: 48.86, lng: 2.237992 };
     const [open, setOpen] = useState(false);
 //     const splitCategory = points?.flatMap((point) => point.category.split("|"));
 //   const categories = Array.from(new Set(splitCategory))
 
+const filteredList = useMemo(getFilteredList, [selectedCategory, icon, points])
 
 function getFilteredList() {
     if (selectedCategory?.length === 0) {
@@ -39,20 +41,21 @@ function getFilteredList() {
                             points={points} 
                             icon={icon} />
       };
-    return points.filter((point) => point.category.includes(selectedCategory));
+    return selectedCategory.filter((category) => category.includes(selectedCategory));
   };
 
-  const updateSelectedCategories = (points:Point[]) => {
-    if (points.find((category) => category === points.category)) {
-      const updatedCategories = selectedCategory.filter((category) => category !== points.category);
-      setSelectedCategory(updatedCategories);
-    } else {
-      setSelectedCategory([...selectedCategory, points]);
-    }
-  }
+
+const updateSelectedCategories = (value) => {
+  if (selectedCategory.find((category) => category === value)) {
+    const updatedCategories = selectedCategory.filter((category) => category !== value);
+         setSelectedCategory(updatedCategories);
+     } else {
+        setSelectedCategory([...selectedCategory, value]);
+     }
+ }
 
   const resetSelectedCategories = () => {
-    setSelectedCategory("");
+    setSelectedCategory([]);
   };
 
     return (
@@ -81,26 +84,31 @@ function getFilteredList() {
                                 </InfoWindow>
                             )}
                             <Markers 
+                            filteredList={filteredList}
                             selectedCategory={selectedCategory}
                             onSelect={setSelectedCategory}
                             points={scenes} 
                             icon='🎶' />
                             <Markers
+                            filteredList={filteredList}
                             selectedCategory={selectedCategory}
                             onSelect={setSelectedCategory} 
                             points={wc}
                             icon='🚾' />
-                            <Markers 
+                            <Markers
+                            filteredList={filteredList} 
                             selectedCategory={selectedCategory}
                             onSelect={setSelectedCategory}
                             points={shop} 
                             icon='🛒' />
-                            <Markers 
+                            <Markers
+                            filteredList={filteredList} 
                             selectedCategory={selectedCategory}
                             onSelect={setSelectedCategory}
                             points={restaurant} 
                             icon='🍴' />
-                            <Markers 
+                            <Markers
+                            filteredList={filteredList} 
                             selectedCategory={selectedCategory}
                             onSelect={setSelectedCategory}
                             points={buvette} 
