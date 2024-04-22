@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function FilterInput({ onChange, checked, id, value, label, name }) {
   return (
-    <div className='lg:text-white md:text-brown'>
+    <div className='text-white bg-black'>
       <label htmlFor={id}>
         <input
           type="checkbox"
@@ -11,7 +11,7 @@ function FilterInput({ onChange, checked, id, value, label, name }) {
           name={name}
           onChange={onChange}
           checked={checked}
-          className='accent-yellow'
+          className='accent-orange'
         />
         {label}
       </label>
@@ -20,63 +20,60 @@ function FilterInput({ onChange, checked, id, value, label, name }) {
 }
 
 
-function Filter({ setSelectedCategories, resetSelectedCategories, selectedCategories }) {
+function Filter({ resetSelectedCategories, selectedCategory, setSelectedCategory }) {
 
   const [isCategoryOpen, setIsCategoryOpen] = useState(true)
 
-
-
   return (
-    <fieldset className='mt-20 p-2 pr-20 lg:bg-orange md:bg-white'>
-      <legend>FILTRE</legend>
+    <fieldset className='pt-10 p-2 pr-10 bg-black'>
       <section>
-        <h2 className='text-yellow underline font-semibold'>
-          Catégories
+        <h2 className='text-orange underline text-2xl text-center font-extrabold'>
+          CATEGORIES
           <button onClick={() => setIsCategoryOpen((prev) => !prev)}>+</button>
         </h2>
         <div className={isCategoryOpen ? "showFilter" : "hideFilter"}>
-          <form className='pt-2 pr-5'>
+          <form className='pt-2 md:text-xl flex justify-around'>
             <FilterInput
               id="all"
               name="all"
-              checked={selectedCategories?.length === 0}
-              label="Tous"
+              checked={selectedCategory?.length === 0}
+              label=" Tous"
               onChange={() => resetSelectedCategories()}
             />
             <FilterInput
               id="buvette"
               name="buvette"
               value="buvette"
-              label="buvette"
-              onChange={e => setSelectedCategories(e.target.value)}
+              label=" 🍹Buvette"
+              onChange={e => setSelectedCategory(e.target.value)}
             />
             <FilterInput
               id="restauration"
               name="restauration"
               value="restauration"
-              label="restauration"
-              onChange={e => setSelectedCategories(e.target.value)}
+              label=" 🍴 Restauration"
+              onChange={e => setSelectedCategory(e.target.value)}
             />
             <FilterInput
               id="scene"
               name="scene"
               value="scene"
-              label="scene noir"
-              onChange={e => setSelectedCategories(e.target.value)}
+              label=" 🎶 Scène"
+              onChange={e => setSelectedCategory(e.target.value)}
             />
             <FilterInput
               id="shop"
               name="shop"
               value="shop"
-              label="shop"
-              onChange={e => setSelectedCategories(e.target.value)}
+              label=" 🛒 Shop"
+              onChange={e => setSelectedCategory(e.target.value)}
             />
             <FilterInput
               id="wc"
               name="wc"
               value="wc"
-              label="wc"
-              onChange={e => setSelectedCategories(e.target.value)}
+              label=" 🚾 WC"
+              onChange={e => setSelectedCategory(e.target.value)}
             />
           </form>
         </div>
