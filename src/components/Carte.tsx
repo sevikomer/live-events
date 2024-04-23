@@ -6,7 +6,7 @@ import {
     Pin,
     InfoWindow,
 } from "@vis.gl/react-google-maps";
-import {useState, useMemo} from "react";
+import { useState, useMemo } from "react";
 import Markers from './Markers.tsx';
 import Filter from './Filter.js';
 import scenes from "../data/scenes.ts";
@@ -31,7 +31,9 @@ const Carte = ({ onSelect, points, icon}: Props ) => {
 //     const splitCategory = points?.flatMap((point) => point.category.split("|"));
 //   const categories = Array.from(new Set(splitCategory))
 
+
 const filteredList = useMemo(getFilteredList, [selectedCategory, icon, points])
+
 
 function getFilteredList() {
     if (selectedCategory?.length === 0) {
