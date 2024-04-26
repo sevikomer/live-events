@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
     useMap,
     AdvancedMarker,
@@ -6,18 +6,27 @@ import {
 } from "@vis.gl/react-google-maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import type { Marker } from "@googlemaps/markerclusterer";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback} from "react";
 
 type Point = google.maps.LatLngLiteral & { key: string } & { name:string } & {category:string};
 type Props = {
-  filteredList;
   selectedCategory;
   onSelect(category);
   points: Point[];
   icon 
 };
 
-const Markers = ({ selectedCategory, points, icon}: Props ) => {
+const Markers = ({selectedCategory, points, icon}: Props ) => {
+
+  const [filteredList, setFilteredList] = useState(points)
+  useMemo(() => {
+    const list = selectedCategory?.length > 0
+    ? points?.filter((point) =>  selectedCategory?.includes(point.category))
+    : points;
+    setFilteredList(list);
+  }, [selectedCategory, points])
+  
+  
     
     const [open, setOpen] = useState(false);  
   const map = useMap();
@@ -52,10 +61,6 @@ const Markers = ({ selectedCategory, points, icon}: Props ) => {
   });
 
 
-  const filteredList = selectedCategory
-  ? points.filter((point) => point.category.includes(selectedCategory))
-  : points;
-
   /*const [selectedCategories, setSelectedCategories] = useState(points);
   const filteredList = useMemo(getFilteredList, [selectedCategories, icon, open, setMarkerRef, points]);*/
 
@@ -64,7 +69,8 @@ const Markers = ({ selectedCategory, points, icon}: Props ) => {
   return (
     <> 
       {filteredList.map((point) => (
-        <AdvancedMarker
+        <div key={point.name}>
+<AdvancedMarker
           position={point}
           key={point.key}
           ref={(marker) => setMarkerRef(marker, point.key)}
@@ -77,6 +83,8 @@ const Markers = ({ selectedCategory, points, icon}: Props ) => {
             </InfoWindow>
             )}
         </AdvancedMarker>
+        </div>
+        
       ))
       }
 

@@ -19,6 +19,34 @@ function FilterInput({ onChange, checked, id, value, label, name }) {
   )
 }
 
+const FILTER_OPTIONS = [
+  {
+    label: "🍹Buvette",
+    name: "buvette",
+    value: "buvette"
+  },
+  {
+    label: " 🍴 Restauration",
+    name: "restauration",
+    value: "restauration"
+  },
+  {
+    label: " 🎶 Scène",
+    name: "scene",
+    value: "scene"
+  },
+  {
+    label: " 🛒 Shop",
+    name: "shop",
+    value: "shop"
+  },
+  {
+    label: " 🚾 WC",
+    name: "wc",
+    value: "wc"
+  }
+]
+
 
 function Filter({ resetSelectedCategories, selectedCategory, setSelectedCategory }) {
 
@@ -40,41 +68,18 @@ function Filter({ resetSelectedCategories, selectedCategory, setSelectedCategory
               label=" Tous"
               onChange={() => resetSelectedCategories()}
             />
-            <FilterInput
-              id="buvette"
-              name="buvette"
-              value="buvette"
-              label=" 🍹Buvette"
-              onChange={e => setSelectedCategory(e.target.value)}
-            />
-            <FilterInput
-              id="restauration"
-              name="restauration"
-              value="restauration"
-              label=" 🍴 Restauration"
-              onChange={e => setSelectedCategory(e.target.value)}
-            />
-            <FilterInput
-              id="scene"
-              name="scene"
-              value="scene"
-              label=" 🎶 Scène"
-              onChange={e => setSelectedCategory(e.target.value)}
-            />
-            <FilterInput
-              id="shop"
-              name="shop"
-              value="shop"
-              label=" 🛒 Shop"
-              onChange={e => setSelectedCategory(e.target.value)}
-            />
-            <FilterInput
-              id="wc"
-              name="wc"
-              value="wc"
-              label=" 🚾 WC"
-              onChange={e => setSelectedCategory(e.target.value)}
-            />
+            {
+              FILTER_OPTIONS.map((option) => (
+                <FilterInput
+                  id={option.name}
+                  name={option.name}
+                  checked={selectedCategory?.includes(option.value)}
+                  value={option.value}
+                  label={option.label}
+                  onChange={e => setSelectedCategory(e.target.value)}
+                />
+              ))
+            }
           </form>
         </div>
       </section>

@@ -6,7 +6,7 @@ import {
     Pin,
     InfoWindow,
 } from "@vis.gl/react-google-maps";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Markers from './Markers.tsx';
 import Filter from './Filter.js';
 import scenes from "../data/scenes.ts";
@@ -17,42 +17,45 @@ import buvette from "../data/buvette.ts";
 
 type Point = google.maps.LatLngLiteral & { key: string } & { name:string } & {category:string};
 type Props = {
-  onSelect(category:string):void;
   points: Point[];
-  icon;
 };
 
-const Carte = ({ onSelect, points, icon}: Props ) => {
+const MARKERS_OPTIONS = [
+    {
+        points: scenes, 
+        icon: "🎶" ,
+    },
+    {
+        points: wc, 
+        icon: "🚾" ,
+    },
+    {
+        points: shop, 
+        icon: "🛒" ,
+    },
+    {
+        points: restaurant, 
+        icon: "🍴" ,
+    },
+    {
+        points: buvette, 
+        icon: "🍹" ,
+    },
+];
+
+const Carte = ({points}: Props ) => {
    
-    const [selectedCategory, setSelectedCategory] = useState([]);
-
-    const position = { lat: 48.86, lng: 2.237992 };
-    const [open, setOpen] = useState(false);
-//     const splitCategory = points?.flatMap((point) => point.category.split("|"));
-//   const categories = Array.from(new Set(splitCategory))
+const [selectedCategory, setSelectedCategory] = useState([]);
+const position = { lat: 48.86, lng: 2.237992 };
+const [open, setOpen] = useState(false);
 
 
-const filteredList = useMemo(getFilteredList, [selectedCategory, icon, points])
-
-
-function getFilteredList() {
-    if (selectedCategory?.length === 0) {
-      return <Markers 
-      selectedCategory={selectedCategory}
-                            onSelect={setSelectedCategory}
-                            points={points} 
-                            icon={icon} />
-      };
-    return selectedCategory.filter((category) => category.includes(selectedCategory));
-  };
-
-
-const updateSelectedCategories = (value) => {
-  if (selectedCategory.find((category) => category === value)) {
-    const updatedCategories = selectedCategory.filter((category) => category !== value);
+const updateSelectedCategories = (points : never) => {
+  if (selectedCategory.find((category) => category === points)) {
+    const updatedCategories = selectedCategory.filter((category) => category !== points);
          setSelectedCategory(updatedCategories);
      } else {
-        setSelectedCategory([...selectedCategory, value]);
+        setSelectedCategory([...selectedCategory, points]);
      }
  }
 
@@ -85,36 +88,16 @@ const updateSelectedCategories = (value) => {
                                     <p>Vous êtes ici au Nation Sound</p>
                                 </InfoWindow>
                             )}
-                            <Markers 
-                            filteredList={filteredList}
-                            selectedCategory={selectedCategory}
-                            onSelect={setSelectedCategory}
-                            points={scenes} 
-                            icon='🎶' />
-                            <Markers
-                            filteredList={filteredList}
-                            selectedCategory={selectedCategory}
-                            onSelect={setSelectedCategory} 
-                            points={wc}
-                            icon='🚾' />
-                            <Markers
-                            filteredList={filteredList} 
-                            selectedCategory={selectedCategory}
-                            onSelect={setSelectedCategory}
-                            points={shop} 
-                            icon='🛒' />
-                            <Markers
-                            filteredList={filteredList} 
-                            selectedCategory={selectedCategory}
-                            onSelect={setSelectedCategory}
-                            points={restaurant} 
-                            icon='🍴' />
-                            <Markers
-                            filteredList={filteredList} 
-                            selectedCategory={selectedCategory}
-                            onSelect={setSelectedCategory}
-                            points={buvette} 
-                            icon='🍹' />
+                            {
+                            MARKERS_OPTIONS.map((option) => (
+                                <Markers
+                                selectedCategory={selectedCategory}
+                                onSelect={updateSelectedCategories}
+                                points={option.points}
+                                icon={option.icon}
+                                />
+                            ))
+                            }
                         </Map>
                     </div>
                 </APIProvider>
