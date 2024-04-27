@@ -18,7 +18,7 @@ const Programmation = () => {
 
   return (
     <>
-      <div className='text-white bg-black p-8'>
+      <div className='text-orange bg-black p-8'>
         <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>PROGRAMMATION</h1>
       </div>
       <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 bg-black'>

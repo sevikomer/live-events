@@ -65,7 +65,7 @@ const updateSelectedCategories = (points : never) => {
 
     return (
         <>
-            <div className='text-white bg-black p-8'>
+            <div className='text-orange bg-black p-8'>
                 <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>CARTE INTERACTIVE</h1>
             </div>
             <div className=''>
