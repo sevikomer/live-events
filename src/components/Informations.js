@@ -1,8 +1,7 @@
 import React from 'react';
 /*import axios from "axios";*/
-import "../style.css";
 
-const Informations = () => {
+const Informations = (divStyle) => {
 
     /*   const [infos, setInfos] = useState({})
    
@@ -17,8 +16,8 @@ const Informations = () => {
 
     return (
         <>
-            <div className='text-orange bg-black p-8'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>INFORMATIONS</h1>
+            <div className='text-orange p-8 bg-black'>
+                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase'>informations</h1>
             </div>
             {/* <div className='bg-black text-white'>
                 {
@@ -26,33 +25,33 @@ const Informations = () => {
                         <div dangerouslySetInnerHTML={{ __html: infos.content.rendered }} />)
                 }
             </div> */}
-            <div className='text-white bg-black pt-2' >
+            <div className='text-white bg-black py-10' >
                 <div>
                     <h1 className='lg:text-4xl text-2xl font-bold text-center pt-2 uppercase'>les chiffres</h1>
                     <div className='flex justify-center'>
                         <img src={'/images/equalizer.png'} alt='equalizer' className='w-10' />
                     </div>
                 </div>
-                <div className='flex justify-around py-10 px-40'>
-                    <div>
+                <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-items-start pt-10 pb-20 px-40'>
+                    <div className='py-4'>
                         <p className='text-4xl pb-6'>27</p>
                         <img src={'/images/seprator.png'} alt='seprator' className='w-10' />
                         <p className='uppercase text-xl font-bold'>amazing light</p>
                         <p className='uppercase font-bold text-orange'>show</p>
                     </div>
-                    <div>
+                    <div className='py-4'>
                         <p className='text-4xl pb-6'>54</p>
                         <img src={'/images/seprator.png'} alt='seprator' className='w-10' />
                         <p className='uppercase text-xl font-bold'>popular</p>
                         <p className='uppercase font-bold text-orange'>djs</p>
                     </div>
-                    <div>
+                    <div className='py-4'>
                         <p className='text-4xl pb-6'>8</p>
                         <img src={'/images/seprator.png'} alt='seprator' className='w-10' />
                         <p className='uppercase text-xl font-bold'>live</p>
                         <p className='uppercase font-bold text-orange'>scènes</p>
                     </div>
-                    <div>
+                    <div className='py-4'>
                         <p className='text-4xl pb-6'>32</p>
                         <img src={'/images/seprator.png'} alt='seprator' className='w-10' />
                         <p className='uppercase text-xl font-bold'>live</p>
@@ -65,19 +64,19 @@ const Informations = () => {
                         <img src={'/images/equalizer.png'} alt='equalizer' className='w-10' />
                     </div>
                 </div>
-                <div className='flex justify-around lg:justify-center pt-6'>
+                <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 px-20 pt-10 pb-20'>
                     <img src={'/images/team1.jpg'} alt='team1' className='p-2 w-72' />
                     <img src={'/images/team2.jpg'} alt='team2' className='p-2 w-72' />
                     <img src={'/images/team3.jpg'} alt='team3' className='p-2 w-72' />
                     <img src={'/images/team4.jpg'} alt='team4' className='p-2 w-72' />
                 </div>
-                <div className='pt-8'>
+                <div>
                     <h1 className='lg:text-4xl text-2xl font-bold text-center pt-2 uppercase'>galerie photos</h1>
                     <div className='flex justify-center'>
                         <img src={'/images/equalizer.png'} alt='equalizer' className='w-10' />
                     </div>
                 </div>
-                <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center pt-6 px-40'>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center pt-10 pb-20 px-20'>
                     <img src={'/images/gal-1.jpg'} alt='gal-1' className='p-2 w-96' />
                     <img src={'/images/gal-2.jpg'} alt='gal-2' className='p-2 w-96' />
                     <img src={'/images/gal-3.jpg'} alt='gal-3' className='p-2 w-96' />
@@ -88,12 +87,12 @@ const Informations = () => {
                     <img src={'/images/gal-5.jpg'} alt='gal-5' className='p-2 w-96' />
                     <img src={'/images/gal-7.jpg'} alt='gal-7' className='p-2 w-96' />
                 </div>
-                <div className='pt-8'>
+                <div className='py-10'>
                     <h1 className='lg:text-4xl text-2xl font-bold text-center pt-2 uppercase'>témoignages</h1>
                     <div className='flex justify-center'>
                         <img src={'/images/equalizer.png'} alt='equalizer' className='w-10' />
                     </div>
-                    <div className='flex py-10 px-40'>
+                    <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 py-10 px-20'>
                         <div>
                             <img src={'/images/quote.png'} alt='quote' className='w-6' />
                             <div className='italic px-10'>

@@ -11,18 +11,25 @@ import Carte from "./components/Carte.tsx"
 
 
 
-function AppRoutes(posts) {
+function AppRoutes() {
+
+  const divStyle = {
+    backgroundImage: "url(background.jpg)",
+    height: "100vh",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
   return (
     <div>
       <Routes>
         <Route path="/" Component={Home} />
-        <Route path="/informations" element={<Informations posts={posts} />} />
-        <Route path="/programmation" element={<Programmation posts={posts} />} />
-        <Route path="/billetterie" element={<Billetterie posts={posts} />} />
-        <Route path="/reseaux" element={<Reseaux posts={posts} />} />
-        <Route path='/carte' element={<Carte />} />
-        <Route path="/faq" element={<Faq posts={posts} />} />
-        <Route path="/partenaires" element={<Partenaires posts={posts} />} />
+        <Route path="/informations" element={<Informations divtyle={divStyle} />} />
+        <Route path="/programmation" element={<Programmation divStyle={divStyle} />} />
+        <Route path="/billetterie" element={<Billetterie divStyle={divStyle} />} />
+        <Route path="/reseaux" element={<Reseaux divStyle={divStyle} />} />
+        <Route path='/carte' element={<Carte divStyle={divStyle} />} />
+        <Route path="/faq" element={<Faq divStyle={divStyle} />} />
+        <Route path="/partenaires" element={<Partenaires divStyle={divStyle} />} />
       </Routes>
     </div>
   )

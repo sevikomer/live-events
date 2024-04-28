@@ -55,8 +55,8 @@ function Filter({ resetSelectedCategories, selectedCategory, setSelectedCategory
   return (
     <fieldset className='pt-10 p-2 pr-10 bg-black'>
       <section>
-        <h2 className='text-orange underline text-2xl text-center font-extrabold'>
-          CATEGORIES
+        <h2 className='text-orange underline text-2xl text-center font-extrabold uppercase'>
+          catégories
           <button onClick={() => setIsCategoryOpen((prev) => !prev)}>+</button>
         </h2>
         <div className={isCategoryOpen ? "showFilter" : "hideFilter"}>

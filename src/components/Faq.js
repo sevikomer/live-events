@@ -4,7 +4,7 @@ function Faq() {
     return (
         <>
             <div className='text-orange text-justify bg-black p-8'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>INFOS PRATIQUES & FAQ</h1>
+                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase'>infos pratiques & faq</h1>
             </div>
             <div className='text-white bg-black p-8'>
                 <ul>

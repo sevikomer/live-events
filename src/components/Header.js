@@ -12,20 +12,20 @@ function Header() {
         </button>
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex text-xl m-1 p-3">
           <li className='hover:text-orange'>
-            <Link to="/informations" className=''>INFORMATIONS</Link>
+            <Link to="/informations" className='uppercase'>informations</Link>
           </li>
           <li className='hover:text-orange'>
-            <Link to="/programmation">PROGRAMMATION</Link>
+            <Link to="/programmation" className='uppercase'>programmation</Link>
           </li>
           <li className='hover:text-orange'>
-            <Link to="/billetterie">BILLETTERIE</Link>
+            <Link to="/billetterie" className='uppercase'>billetterie</Link>
           </li>
           <li className='hover:text-orange'>
-            <Link to="/carte">CARTE INTERACTIVE</Link>
+            <Link to="/carte" className='uppercase'>carte interactive</Link>
           </li>
         </ul>
         <div className='m-1 p-3'>
-          <Link to="/" className='text-orange hover:text-white font-extrabold text-4xl'>LIVE EVENTS</Link>
+          <Link to="/" className='text-orange hover:text-white font-extrabold text-4xl uppercase'>live events</Link>
         </div>
       </div>
       <nav className='flex gap-8 text-xl lg:hidden'>
@@ -33,16 +33,16 @@ function Header() {
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <ul className="">
               <li className="my-8 hover:text-orange">
-                <Link to="/informations" className=''>INFORMATIONS</Link>
+                <Link to="/informations" className='uppercase'>informations</Link>
               </li>
               <li className="my-8 hover:text-orange">
-                <Link to="/programmation">PROGRAMMATION</Link>
+                <Link to="/programmation" className='uppercase'>programmation</Link>
               </li>
               <li className="my-8 hover:text-orange">
-                <Link to="/billetterie">BILLETTERIE</Link>
+                <Link to="/billetterie" className='uppercase'>billetterie</Link>
               </li>
               <li className="my-8 hover:text-orange">
-                <Link to="/carte">CARTE INTERACTIVE</Link>
+                <Link to="/carte" className='uppercase'>carte interactive</Link>
               </li>
             </ul>
           </div>

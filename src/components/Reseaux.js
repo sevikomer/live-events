@@ -4,7 +4,7 @@ function Reseaux() {
     return (
         <>
             <div className='text-orange bg-black p-8'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2'>RESEAUX SOCIAUX</h1>
+                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase'>réseaux sociaux</h1>
             </div>
             <div className='text-white bg-black'>
                 <ul className='pt-4 flex justify-between lg:justify-center'>
