@@ -15,6 +15,9 @@ module.exports = {
       fontFamily: {
         'fjalla': ['Fjalla One'],
       },
+      backgroundImage: {
+        'background': "url('../public/images/photo-accueil.jpg')",
+      },
     },
   },
   plugins: [],

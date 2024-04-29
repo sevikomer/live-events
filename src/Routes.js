@@ -10,26 +10,20 @@ import Partenaires from './components/Partenaires'
 import Carte from "./components/Carte.tsx"
 
 
-
 function AppRoutes() {
 
-  const divStyle = {
-    backgroundImage: "url(background.jpg)",
-    height: "100vh",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  };
+
   return (
     <div>
       <Routes>
         <Route path="/" Component={Home} />
-        <Route path="/informations" element={<Informations divtyle={divStyle} />} />
-        <Route path="/programmation" element={<Programmation divStyle={divStyle} />} />
-        <Route path="/billetterie" element={<Billetterie divStyle={divStyle} />} />
-        <Route path="/reseaux" element={<Reseaux divStyle={divStyle} />} />
-        <Route path='/carte' element={<Carte divStyle={divStyle} />} />
-        <Route path="/faq" element={<Faq divStyle={divStyle} />} />
-        <Route path="/partenaires" element={<Partenaires divStyle={divStyle} />} />
+        <Route path="/informations" element={<Informations />} />
+        <Route path="/programmation" element={<Programmation />} />
+        <Route path="/billetterie" element={<Billetterie />} />
+        <Route path="/reseaux" element={<Reseaux />} />
+        <Route path='/carte' element={<Carte />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/partenaires" element={<Partenaires />} />
       </Routes>
     </div>
   )

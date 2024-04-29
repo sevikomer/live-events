@@ -65,8 +65,10 @@ const updateSelectedCategories = (points : never) => {
 
     return (
         <>
-            <div className='text-orange bg-black p-8'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase'>carte interactive</h1>
+            <div className='bg-background bg-no-repeat bg-cover bg-center '>
+                <div className='text-orange p-8 py-28 backdrop-brightness-50'>
+                    <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>carte interactive</h1>
+                </div>
             </div>
             <div className=''>
            <Filter setSelectedCategory={updateSelectedCategories}

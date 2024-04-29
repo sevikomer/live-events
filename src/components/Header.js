@@ -29,7 +29,7 @@ function Header() {
         </div>
       </div>
       <nav className='flex gap-8 text-xl lg:hidden'>
-        <section className='MOBILE-MENU block lg:hidden'>
+        <section className='MOBILE-MENU block pl-2 lg:hidden'>
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <ul className="">
               <li className="my-8 hover:text-orange">
