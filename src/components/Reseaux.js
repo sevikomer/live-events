@@ -3,10 +3,8 @@ import React from 'react'
 function Reseaux() {
     return (
         <>
-            <div className='bg-background bg-no-repeat bg-cover bg-center '>
-                <div className='text-orange p-8 py-28 backdrop-brightness-50'>
-                    <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>réseaux sociaux</h1>
-                </div>
+            <div className='text-orange p-8 bg-black'>
+                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>réseaux sociaux</h1>
             </div>
             <div className='text-white bg-black px-4'>
                 <ul className='pt-4 flex justify-between lg:justify-center'>
