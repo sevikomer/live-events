@@ -30,7 +30,7 @@ const Carte = ({ points }: Props) => {
   useEffect(() => {
     const initMap = async () => {
       const resVenues = await axios.get(
-        "http://localhost/live-events/wp-json/tribe/events/v1/venues"
+        "http://localhost/live-events/wp-json/tribe/events/v1/venues/?per_page=16"
       );
 
       const formattedVenues = resVenues?.data?.venues?.map((v) => {
