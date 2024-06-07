@@ -1,34 +1,30 @@
-import React, { useMemo } from 'react';
-import {
-    useMap,
-    AdvancedMarker,
-    InfoWindow,
-} from "@vis.gl/react-google-maps";
+import React, { useMemo } from "react";
+import { useMap, AdvancedMarker, InfoWindow } from "@vis.gl/react-google-maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import type { Marker } from "@googlemaps/markerclusterer";
-import { useEffect, useState, useRef, useCallback} from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
-type Point = google.maps.LatLngLiteral & { key: string } & { name:string } & {category:string};
+type Point = google.maps.LatLngLiteral & { key: string } & { name: string } & {
+  category: string;
+};
 type Props = {
   selectedCategory;
   onSelect(category);
   points: Point[];
-  icon 
+  icon;
 };
 
-const Markers = ({selectedCategory, points, icon}: Props ) => {
-
-  const [filteredList, setFilteredList] = useState(points)
+const Markers = ({ selectedCategory, points, icon }: Props) => {
+  const [filteredList, setFilteredList] = useState(points);
   useMemo(() => {
-    const list = selectedCategory?.length > 0
-    ? points?.filter((point) =>  selectedCategory?.includes(point.category))
-    : points;
+    const list =
+      selectedCategory?.length > 0
+        ? points?.filter((point) => selectedCategory?.includes(point.category))
+        : points;
     setFilteredList(list);
-  }, [selectedCategory, points])
-  
-  
-    
-    const [open, setOpen] = useState(false);  
+  }, [selectedCategory, points]);
+
+  const [open, setOpen] = useState(false);
   const map = useMap();
   const [markers, setMarkers] = useState<{ [key: string]: Marker }>({});
   const clusterer = useRef<MarkerClusterer | null>(null);
@@ -60,36 +56,30 @@ const Markers = ({selectedCategory, points, icon}: Props ) => {
     });
   });
 
-
   /*const [selectedCategories, setSelectedCategories] = useState(points);
   const filteredList = useMemo(getFilteredList, [selectedCategories, icon, open, setMarkerRef, points]);*/
 
-
-
   return (
-    <> 
+    <>
       {filteredList.map((point) => (
         <div key={point.name}>
-<AdvancedMarker
-          position={point}
-          key={point.key}
-          ref={(marker) => setMarkerRef(marker, point.key)}
-          onClick={() => setOpen(true)}
-        >
-          <span style={{ fontSize: "1.5rem" }}>{icon}</span>
-          {open && (
-            <InfoWindow position={point} onCloseClick={() => setOpen(false)}>
+          <AdvancedMarker
+            position={point}
+            key={point.key}
+            ref={(marker) => setMarkerRef(marker, point.key)}
+            onClick={() => setOpen(true)}
+          >
+            <span style={{ fontSize: "1.5rem" }}>{icon}</span>
+            {open && (
+              <InfoWindow position={point} onCloseClick={() => setOpen(false)}>
                 <p>{point.name}</p>
-            </InfoWindow>
+              </InfoWindow>
             )}
-        </AdvancedMarker>
+          </AdvancedMarker>
         </div>
-        
-      ))
-      }
-
+      ))}
     </>
   );
-}
+};
 
-export default Markers
+export default Markers;

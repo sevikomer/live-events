@@ -14,8 +14,6 @@ const Programmation = () => {
       });
   }, [])
 
-
-
   return (
     <>
       <div className='text-orange p-8 bg-black'>
@@ -25,7 +23,7 @@ const Programmation = () => {
         {events?.map(event => (
           <div key={event.id} className='bg-black text-white  p-20 text-center'>
             <div className='flex justify-center '>
-              <img src={event.image.url} alt='' className='w-60 h-40' />
+              <img src={event.image?.url} alt='' className='w-60 h-40' />
             </div>
             <div>
               <h3 className='font-bold text-xl'>{event.title}</h3>

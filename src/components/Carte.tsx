@@ -1,111 +1,149 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import {
-    APIProvider,
-    Map,
-    AdvancedMarker,
-    Pin,
-    InfoWindow,
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  Pin,
+  InfoWindow,
 } from "@vis.gl/react-google-maps";
 import { useState } from "react";
-import Markers from './Markers.tsx';
-import Filter from './Filter.js';
-import scenes from "../data/scenes.ts";
-import wc from "../data/wc.ts";
-import shop from "../data/shop.ts";
-import restaurant from "../data/restauration.ts";
-import buvette from "../data/buvette.ts";
+import Markers from "./Markers.tsx";
+import Filter from "./Filter.js";
+import axios from "axios";
 
-type Point = google.maps.LatLngLiteral & { key: string } & { name:string } & {category:string};
+type Point = google.maps.LatLngLiteral & { key: string } & { name: string } & {
+  category: string;
+};
 type Props = {
   points: Point[];
 };
 
-const MARKERS_OPTIONS = [
-    {
-        points: scenes, 
-        icon: "🎶" ,
-    },
-    {
-        points: wc, 
-        icon: "🚾" ,
-    },
-    {
-        points: shop, 
-        icon: "🛒" ,
-    },
-    {
-        points: restaurant, 
-        icon: "🍴" ,
-    },
-    {
-        points: buvette, 
-        icon: "🍹" ,
-    },
-];
+type MarkerOptions = { points: Point[]; icon: String }[];
 
-const Carte = ({points}: Props ) => {
-   
-const [selectedCategory, setSelectedCategory] = useState([]);
-const position = { lat: 48.86, lng: 2.237992 };
-const [open, setOpen] = useState(false);
+const Carte = ({ points }: Props) => {
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  const position = { lat: 48.86, lng: 2.237992 };
+  const [open, setOpen] = useState(false);
 
+  const [markerOptions, setMarkerOptions] = useState<MarkerOptions>();
 
-const updateSelectedCategories = (points : never) => {
-  if (selectedCategory.find((category) => category === points)) {
-    const updatedCategories = selectedCategory.filter((category) => category !== points);
-         setSelectedCategory(updatedCategories);
-     } else {
-        setSelectedCategory([...selectedCategory, points]);
-     }
- }
+  useEffect(() => {
+    axios
+      .get("http://localhost/live-events/wp-json/tribe/events/v1/venues")
+      .then((res) => {
+        const formattedVenues = res?.data?.venues?.map((v) => {
+          return {
+            category: v.zip,
+            lat: !isNaN(v.address) ? +v.address : 0,
+            lng: !isNaN(v.city) ? +v.city : 0,
+            name: v.venue,
+            key: JSON.stringify({
+              name: v.venue,
+              category: v.zip,
+              lat: !isNaN(v.address) ? +v.address : 0,
+              lng: !isNaN(v.city) ? +v.city : 0,
+            }),
+          };
+        });
+        const scenes = formattedVenues.filter((v) => v.category === "scenes");
+        const wc = formattedVenues.filter((v) => v.category === "wc");
+        const shop = formattedVenues.filter((v) => v.category === "shop");
+        const restaurant = formattedVenues.filter(
+          (v) => v.category === "restaurant"
+        );
+        const buvette = formattedVenues.filter((v) => v.category === "buvette");
+
+        setMarkerOptions([
+          {
+            points: scenes,
+            icon: "🎶",
+          },
+          {
+            points: wc,
+            icon: "🚾",
+          },
+          {
+            points: shop,
+            icon: "🛒",
+          },
+          {
+            points: restaurant,
+            icon: "🍴",
+          },
+          {
+            points: buvette,
+            icon: "🍹",
+          },
+        ]);
+      });
+  }, []);
+
+  const updateSelectedCategories = (points: never) => {
+    if (selectedCategory.find((category) => category === points)) {
+      const updatedCategories = selectedCategory.filter(
+        (category) => category !== points
+      );
+      setSelectedCategory(updatedCategories);
+    } else {
+      setSelectedCategory([...selectedCategory, points]);
+    }
+  };
 
   const resetSelectedCategories = () => {
     setSelectedCategory([]);
   };
 
-    return (
-        <>
-            <div className='text-orange p-8 bg-black'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>carte interactive</h1>
+  return (
+    <>
+      <div className="text-orange p-8 bg-black">
+        <h1 className="lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase ">
+          carte interactive
+        </h1>
+      </div>
+      <div className="">
+        <Filter
+          setSelectedCategory={updateSelectedCategories}
+          selectedCategory={selectedCategory}
+          resetSelectedCategories={resetSelectedCategories}
+        />
+        <div>
+          <APIProvider apiKey={"AIzaSyCX1gIY8TBO0lKODgdYnD2hZFMDNx76bsA"}>
+            <div style={{ height: "100vh", width: "100%" }}>
+              <Map zoom={15} center={position} mapId={"ca193f28f30fec32"}>
+                <AdvancedMarker
+                  position={position}
+                  onClick={() => setOpen(true)}
+                >
+                  <Pin
+                    background={"grey"}
+                    borderColor={"green"}
+                    glyphColor={"blue"}
+                  />
+                </AdvancedMarker>
+                {open && (
+                  <InfoWindow
+                    position={position}
+                    onCloseClick={() => setOpen(false)}
+                  >
+                    <p>Vous êtes ici au Nation Sound</p>
+                  </InfoWindow>
+                )}
+                {markerOptions?.map((option, index) => (
+                  <Markers
+                    key={`markers-cat-${index}`}
+                    selectedCategory={selectedCategory}
+                    onSelect={updateSelectedCategories}
+                    points={option.points}
+                    icon={option.icon}
+                  />
+                ))}
+              </Map>
             </div>
-            <div className=''>
-           <Filter setSelectedCategory={updateSelectedCategories}
-           selectedCategory={selectedCategory}
-           resetSelectedCategories={resetSelectedCategories}/>
-                    <div>
-                <APIProvider apiKey={'AIzaSyCX1gIY8TBO0lKODgdYnD2hZFMDNx76bsA'}>
-                    <div style={{ height: "100vh", width: "100%"}}>
-                        <Map zoom={15} center={position} mapId={'ca193f28f30fec32'}>
-                            <AdvancedMarker position={position} onClick={() => setOpen(true)}>
-                                <Pin
-                                    background={"grey"}
-                                    borderColor={"green"}
-                                    glyphColor={"blue"}
-                                />
-                            </AdvancedMarker>
-                            {open && (
-                                <InfoWindow position={position} onCloseClick={() => setOpen(false)}>
-                                    <p>Vous êtes ici au Nation Sound</p>
-                                </InfoWindow>
-                            )}
-                            {
-                            MARKERS_OPTIONS.map((option) => (
-                                <Markers
-                                selectedCategory={selectedCategory}
-                                onSelect={updateSelectedCategories}
-                                points={option.points}
-                                icon={option.icon}
-                                />
-                            ))
-                            }
-                        </Map>
-                    </div>
-                </APIProvider>
-            </div> 
-            </div>
-    
-        </>
-    );
+          </APIProvider>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Carte;
