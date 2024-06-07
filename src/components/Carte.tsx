@@ -28,54 +28,57 @@ const Carte = ({ points }: Props) => {
   const [markerOptions, setMarkerOptions] = useState<MarkerOptions>();
 
   useEffect(() => {
-    axios
-      .get("http://localhost/live-events/wp-json/tribe/events/v1/venues")
-      .then((res) => {
-        const formattedVenues = res?.data?.venues?.map((v) => {
-          return {
+    const initMap = async () => {
+      const resVenues = await axios.get(
+        "http://localhost/live-events/wp-json/tribe/events/v1/venues"
+      );
+
+      const formattedVenues = resVenues?.data?.venues?.map((v) => {
+        return {
+          category: v.zip,
+          lat: !isNaN(v.address) ? +v.address : 0,
+          lng: !isNaN(v.city) ? +v.city : 0,
+          name: v.venue,
+          key: JSON.stringify({
+            name: v.venue,
             category: v.zip,
             lat: !isNaN(v.address) ? +v.address : 0,
             lng: !isNaN(v.city) ? +v.city : 0,
-            name: v.venue,
-            key: JSON.stringify({
-              name: v.venue,
-              category: v.zip,
-              lat: !isNaN(v.address) ? +v.address : 0,
-              lng: !isNaN(v.city) ? +v.city : 0,
-            }),
-          };
-        });
-        const scenes = formattedVenues.filter((v) => v.category === "scenes");
-        const wc = formattedVenues.filter((v) => v.category === "wc");
-        const shop = formattedVenues.filter((v) => v.category === "shop");
-        const restaurant = formattedVenues.filter(
-          (v) => v.category === "restaurant"
-        );
-        const buvette = formattedVenues.filter((v) => v.category === "buvette");
-
-        setMarkerOptions([
-          {
-            points: scenes,
-            icon: "🎶",
-          },
-          {
-            points: wc,
-            icon: "🚾",
-          },
-          {
-            points: shop,
-            icon: "🛒",
-          },
-          {
-            points: restaurant,
-            icon: "🍴",
-          },
-          {
-            points: buvette,
-            icon: "🍹",
-          },
-        ]);
+          }),
+        };
       });
+      const scene = formattedVenues.filter((v) => v.category === "scene");
+      const wc = formattedVenues.filter((v) => v.category === "wc");
+      const shop = formattedVenues.filter((v) => v.category === "shop");
+      const restauration = formattedVenues.filter(
+        (v) => v.category === "restauration"
+      );
+      const buvette = formattedVenues.filter((v) => v.category === "buvette");
+
+      setMarkerOptions([
+        {
+          points: scene,
+          icon: "🎶",
+        },
+        {
+          points: wc,
+          icon: "🚾",
+        },
+        {
+          points: shop,
+          icon: "🛒",
+        },
+        {
+          points: restauration,
+          icon: "🍴",
+        },
+        {
+          points: buvette,
+          icon: "🍹",
+        },
+      ]);
+    };
+    initMap();
   }, []);
 
   const updateSelectedCategories = (points: never) => {
