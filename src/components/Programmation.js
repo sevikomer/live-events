@@ -12,13 +12,10 @@ const Programmation = () => {
     venue: null,
   })
 
-  console.log("queryParams : ", queryParams);
-
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const queryParamsPart = qs.stringify(queryParams, { skipNulls: true });
-    console.log("🚀 ~ useEffect ~ url:", queryParamsPart)
 
     setIsLoading(true);
 
@@ -53,7 +50,7 @@ const Programmation = () => {
       </div>
 
       {
-        isLoading ? <div className="bg-black text-orange">CHARGEMENT EN COURS</div>
+        isLoading ? <div className="bg-black text-white text-xl font-bold text-center">CHARGEMENT EN COURS</div>
           :
           <>
             <div className='pt-4 bg-black'>
@@ -65,7 +62,7 @@ const Programmation = () => {
                 <div className='block'>
                   <FilterSelect
                     divClassName={isFilterOpen ? "showFilter" : "hideFilter"}
-                    label="Scène"
+                    label="Scènes"
                     id="venue"
                     value={queryParams.venue}
                     options={[
@@ -86,7 +83,7 @@ const Programmation = () => {
                 <div className='block'>
                   <FilterSelect
                     divClassName={isFilterOpen ? "showFilter" : "hideFilter"}
-                    label="Date"
+                    label="Dates"
                     id="date"
                     value={queryParams.start_date}
                     options={[
