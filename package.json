@@ -1,5 +1,5 @@
 {
-  "name": "chocopap",
+  "name": "live-events",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +14,7 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "fast-equals": "^5.0.1",
+    "qs": "^6.12.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive-carousel": "^3.2.23",

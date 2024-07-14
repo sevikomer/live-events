@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route } from "react-router-dom"
 import Home from './components/Home'
 import Programmation from './components/Programmation'
+import ProgrammationSheet from './components/ProgrammationSheet.js'
 import Informations from './components/Informations'
 import Billetterie from './components/Billetterie'
 import Faq from './components/Faq'
@@ -19,6 +20,7 @@ function AppRoutes() {
         <Route path="/" Component={Home} />
         <Route path="/informations" element={<Informations />} />
         <Route path="/programmation" element={<Programmation />} />
+        <Route path="/programmation/:eventId" element={<ProgrammationSheet />} />
         <Route path="/billetterie" element={<Billetterie />} />
         <Route path="/reseaux" element={<Reseaux />} />
         <Route path='/carte' element={<Carte />} />
