@@ -5,11 +5,6 @@ import axios from "axios";
 
 function ProgrammationSheet() {
 
-    useEffect(() => {
-
-    }, [])
-
-
     const { eventId } = useParams()
 
     const [event, setEvent] = useState({})

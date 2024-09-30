@@ -73,7 +73,6 @@ const Programmation = () => {
                       { label: "Scène 4", value: 213 },
                       { label: "Scène 5", value: 215 },
                     ]}
-                    // checked={queryParams.venue}
                     onChange={e => setQueryParams({
                       ...queryParams,
                       venue: e.target.value?.length > 0 ? e.target.value : undefined
@@ -92,7 +91,6 @@ const Programmation = () => {
                       { label: "2024-06-08", value: "2024-06-08" },
                       { label: "2024-06-09", value: "2024-06-09" },
                     ]}
-                    // checked={selectedDate}
                     onChange={e => setQueryParams({
                       ...queryParams,
                       start_date: e.target.value?.length > 0 ? e.target.value : undefined
