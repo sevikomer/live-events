@@ -41,20 +41,23 @@ const Markers = ({ selectedCategory, points, icon }: Props) => {
     clusterer.current?.addMarkers(Object.values(markers));
   }, [markers]);
 
-  const setMarkerRef = useCallback((marker: Marker | null, key: string) => {
-    if (marker && markers[key]) return;
-    if (!marker && !markers[key]) return;
+  const setMarkerRef = useCallback(
+    (marker: Marker | null, key: string) => {
+      if (marker && markers[key]) return;
+      if (!marker && !markers[key]) return;
 
-    setMarkers((prev) => {
-      if (marker) {
-        return { ...prev, [key]: marker };
-      } else {
-        const newMarkers = { ...prev };
-        delete newMarkers[key];
-        return newMarkers;
-      }
-    });
-  });
+      setMarkers((prev) => {
+        if (marker) {
+          return { ...prev, [key]: marker };
+        } else {
+          const newMarkers = { ...prev };
+          delete newMarkers[key];
+          return newMarkers;
+        }
+      });
+    },
+    [markers]
+  );
 
   /*const [selectedCategories, setSelectedCategories] = useState(points);
   const filteredList = useMemo(getFilteredList, [selectedCategories, icon, open, setMarkerRef, points]);*/
