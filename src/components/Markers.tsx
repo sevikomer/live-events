@@ -59,9 +59,6 @@ const Markers = ({ selectedCategory, points, icon }: Props) => {
     [markers]
   );
 
-  /*const [selectedCategories, setSelectedCategories] = useState(points);
-  const filteredList = useMemo(getFilteredList, [selectedCategories, icon, open, setMarkerRef, points]);*/
-
   return (
     <>
       {filteredList.map((point) => (
