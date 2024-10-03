@@ -15,7 +15,7 @@ function ProgrammationSheet() {
         const getEvent = async () => {
             setIsLoading(true);
             const res = await axios
-                .get(`${process.env.WP_API_URL}/wp-json/tribe/events/v1/events/${eventId}`);
+                .get(`https://live-events.ovh/wp-json/tribe/events/v1/events/${eventId}`);
             console.log("res : ", res);
             setEvent(res?.data ?? {})
             setIsLoading(false);
