@@ -110,9 +110,7 @@ const Carte = ({ points }: Props) => {
           resetSelectedCategories={resetSelectedCategories}
         />
         <div>
-          <APIProvider
-            apiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
-          >
+          <APIProvider apiKey={"AIzaSyCX1gIY8TBO0lKODgdYnD2hZFMDNx76bsA"}>
             <div style={{ height: "100vh", width: "100%" }}>
               <Map zoom={15} center={position} mapId={"ca193f28f30fec32"}>
                 <AdvancedMarker
