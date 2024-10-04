@@ -5,8 +5,6 @@ import qs from "qs";
 
 const Programmation = () => {
 
-  const apiURL = process.env.WP_API_URL;
-
   const [events, setEvents] = useState([])
 
   const [queryParams, setQueryParams] = useState({
@@ -22,13 +20,13 @@ const Programmation = () => {
     setIsLoading(true);
 
     axios
-      .get(`https://${apiURL}/wp-json/tribe/events/v1/events?${queryParamsPart}`)
+      .get(`https://${process.env.WP_API_URL}/wp-json/tribe/events/v1/events?${queryParamsPart}`)
       .then((res) => {
         const data = res.data
         setEvents(data.events);
         setIsLoading(false);
       });
-  }, [queryParams, apiURL])
+  }, [queryParams])
 
   const [isFilterOpen, setIsFilterOpen] = useState(true)
 
