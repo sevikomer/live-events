@@ -20,7 +20,7 @@ const Programmation = () => {
     setIsLoading(true);
 
     axios
-      .get(`https://${process.env.WP_API_URL}/wp-json/tribe/events/v1/events?${queryParamsPart}`)
+      .get(`https://${process.env.REACT_APP_WP_API_URL}/wp-json/tribe/events/v1/events?${queryParamsPart}`)
       .then((res) => {
         const data = res.data
         setEvents(data.events);
