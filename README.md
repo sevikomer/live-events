@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Live Events
+
+Web application which display festival informations for the visitors 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
