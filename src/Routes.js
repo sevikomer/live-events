@@ -20,7 +20,7 @@ function AppRoutes() {
         <Route path="/" Component={Home} />
         <Route path="/informations" element={<Informations />} />
         <Route path="/programmation" element={<Programmation />} />
-        <Route path="/programmation/:eventId" element={<ProgrammationSheet />} />
+        <Route path="/programmation/:idSlug" element={<ProgrammationSheet />} />
         <Route path="/billetterie" element={<Billetterie />} />
         <Route path="/reseaux" element={<Reseaux />} />
         <Route path='/carte' element={<Carte />} />

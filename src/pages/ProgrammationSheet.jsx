@@ -5,7 +5,8 @@ import axios from "axios";
 
 function ProgrammationSheet() {
 
-    const { eventId } = useParams()
+    const { idSlug } = useParams();
+    const id = idSlug.split("-")[0]; 
     const navigate = useNavigate()
 
     const [event, setEvent] = useState({})
@@ -16,13 +17,14 @@ function ProgrammationSheet() {
         const getEvent = async () => {
             setIsLoading(true);
             const res = await axios
-                .get(`https://${process.env.REACT_APP_WP_API_URL}/wp-json/tribe/events/v1/events/${eventId}`);
+                .get(`https://${process.env.REACT_APP_WP_API_URL}/wp-json/tribe/events/v1/events/${id}`);
             setEvent(res?.data ?? {})
-            navigate(`/programmation/${res?.data?.slug}`);
+            navigate(`/programmation/${id}-${res?.data.slug}`, { replace: true });
+            
             setIsLoading(false);
         };
         getEvent().then(() => { }).catch(() => { })
-    }, [eventId, navigate])
+    }, [id, navigate])
 
 
     return (
