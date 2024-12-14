@@ -18,7 +18,7 @@ function ProgrammationSheet() {
             const res = await axios
                 .get(`https://${process.env.REACT_APP_WP_API_URL}/wp-json/tribe/events/v1/events/${eventId}`);
             setEvent(res?.data ?? {})
-            navigate(`/programmation/${res?.data.slug}`);
+            navigate(`/programmation/${res?.data?.slug}`);
             setIsLoading(false);
         };
         getEvent().then(() => { }).catch(() => { })
