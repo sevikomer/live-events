@@ -1,31 +1,14 @@
 import React from 'react';
-/*import axios from "axios";*/
 
-const Informations = ({ divStyle }) => {
+const Informations = () => {
 
-    /*   const [infos, setInfos] = useState({})
-   
-       useEffect(() => {
-           axios
-               .get("http://localhost/live-events/wp-json/wp/v2/pages/35")
-               .then((res) => {
-                   const data = res.data
-                   setInfos(data);
-               });
-       }, []) */
+
 
     return (
         <>
             <div className='text-orange p-8 bg-black'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>informations</h1>
+                <h1 className='lg:text-6xl md:text-4xl sm:text-2xl font-extrabold text-center pt-2 uppercase '>informations</h1>
             </div>
-
-            {/* <div className='bg-black text-white'>
-                {
-                    infos.content && (
-                        <div dangerouslySetInnerHTML={{ __html: infos.content.rendered }} />)
-                }
-            </div> */}
             <div className='text-white bg-black py-10' >
                 <div>
                     <h1 className='lg:text-4xl text-2xl font-bold text-center pt-2 uppercase'>les chiffres</h1>

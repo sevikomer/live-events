@@ -4,7 +4,7 @@ function Partenaires() {
     return (
         <>
             <div className='text-orange p-8 bg-black'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>partenaires</h1>
+                <h1 className='lg:text-6xl md:text-4xl sm:text-2xl font-extrabold text-center pt-2 uppercase '>partenaires</h1>
             </div>
             <div className='text-orange bg-black p-8'>
                 <ul className='pt-4 flex justify-between lg:justify-center'>

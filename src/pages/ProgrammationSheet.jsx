@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from "axios";
 
 
 function ProgrammationSheet() {
 
     const { eventId } = useParams()
+    const navigate = useNavigate()
 
     const [event, setEvent] = useState({})
 
@@ -16,12 +17,12 @@ function ProgrammationSheet() {
             setIsLoading(true);
             const res = await axios
                 .get(`https://${process.env.REACT_APP_WP_API_URL}/wp-json/tribe/events/v1/events/${eventId}`);
-            console.log("res : ", res);
             setEvent(res?.data ?? {})
+            navigate(`/programmation/${res?.data.slug}`);
             setIsLoading(false);
         };
         getEvent().then(() => { }).catch(() => { })
-    }, [eventId])
+    }, [eventId, navigate])
 
 
     return (
@@ -29,7 +30,7 @@ function ProgrammationSheet() {
         event &&
         <div className='bg-black'>
             <div className='text-orange p-8'>
-                <h1 className='lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase '>programmation</h1>
+                <h1 className='lg:text-6xl md:text-4xl sm:text-2xl font-extrabold text-center pt-2 uppercase '>programmation</h1>
             </div>
             {
                 isLoading ? <div className="bg-black text-white text-xl font-bold text-center">CHARGEMENT EN COURS</div>

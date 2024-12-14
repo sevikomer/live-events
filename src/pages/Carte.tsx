@@ -7,8 +7,8 @@ import {
   InfoWindow,
 } from "@vis.gl/react-google-maps";
 import { useState } from "react";
-import Markers from "./Markers.tsx";
-import Filter from "./Filter.js";
+import Markers from "../components/Markers.tsx";
+import Filter from "../components/Filter.jsx";
 import axios from "axios";
 
 type Point = google.maps.LatLngLiteral & { key: string } & { name: string } & {
@@ -99,7 +99,7 @@ const Carte = ({ points }: Props) => {
   return (
     <>
       <div className="text-orange p-8 bg-black">
-        <h1 className="lg:text-6xl text-4xl font-extrabold text-center pt-2 uppercase ">
+        <h1 className="lg:text-6xl md:text-4xl sm:text-2xl font-extrabold text-center pt-2 uppercase ">
           carte interactive
         </h1>
       </div>

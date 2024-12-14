@@ -1,14 +1,14 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
-import Home from './components/Home'
-import Programmation from './components/Programmation'
-import ProgrammationSheet from './components/ProgrammationSheet.js'
-import Informations from './components/Informations'
-import Billetterie from './components/Billetterie'
-import Faq from './components/Faq'
-import Reseaux from './components/Reseaux'
-import Partenaires from './components/Partenaires'
-import Carte from "./components/Carte.tsx"
+import Home from './pages/Home.jsx'
+import Programmation from './pages/Programmation.jsx'
+import ProgrammationSheet from './pages/ProgrammationSheet.jsx'
+import Informations from './pages/Informations.jsx'
+import Billetterie from './pages/Billetterie.jsx'
+import Faq from './pages/Faq.jsx'
+import Reseaux from './pages/Reseaux.jsx'
+import Partenaires from './pages/Partenaires.jsx'
+import Carte from "./pages/Carte.tsx"
 
 
 function AppRoutes() {
