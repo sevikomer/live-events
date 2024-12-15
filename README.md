@@ -1,3 +1,75 @@
+# Application Frontend React - Live Events
+
+## Description
+
+Une application web frontend développée avec React pour gérer et afficher des événements lors du festival. L'application permet aux utilisateurs de consulter une liste d'événements, de voir les détails d'un événement spécifique en utilisant un slug dans l'URL, et de rechercher des événements. L'application interagit avec une API backend pour récupérer les données des événements.
+
+## Fonctionnalités
+
+- Affichage d'une liste d'événements.
+- Détail des événements accessibles via un **slug** dans l'URL.
+- Recherche et filtrage d'événements.
+- Interface utilisateur réactive et interactive.
+- Utilisation de React Router pour gérer la navigation entre les pages.
+
+## Prérequis
+
+- **Node.js** (version 14 ou plus)
+- **npm** ou **yarn**
+
+## Installation
+
+1. Clonez ce projet sur votre machine locale :
+   ```bash
+   git clone https://github.com/sevikomer/live-events.git
+
+2. Allez dans le dossier du projet :
+cd live-events
+
+3. Installez les dépendances :
+Avec npm :
+npm install
+Avec yarn :
+yarn install
+
+Démarrer l'application
+Pour démarrer l'application en mode développement, exécutez la commande suivante :
+Si vous utilisez npm :
+npm start
+
+Si vous utilisez yarn :
+yarn start
+
+L'application sera accessible à l'adresse suivante dans votre navigateur :
+http://localhost:3000
+
+Structure du Projet
+Voici la structure de base de votre projet React :
+nom-du-projet/
+│
+├── public/                  # Contient les fichiers statiques
+│   ├── index.html           # Le fichier HTML principal
+│
+├── src/                     # Contient le code source de l'application
+│   ├── components/          # Composants React réutilisables
+│   ├── pages/               # Pages de l'application
+│   ├── App.js               # Point d'entrée de l'application
+│   ├── index.js             # Fichier d'entrée React
+│   ├── styles/              # Feuilles de style (CSS, SASS)
+│
+├── package.json             # Dépendances et scripts du projet
+└── README.md                # Ce fichier
+
+
+Déploiement :
+L'application est déployée sur **Netlify** et accessible à l'adresse suivante :  
+(https://liveevents1.netlify.app/)
+
+
+
+
+
+
 # Live Events
 
 Web application which display festival informations for the visitors 
