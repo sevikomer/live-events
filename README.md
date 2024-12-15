@@ -32,6 +32,30 @@ npm install
 Avec yarn :
 yarn install
 
+Liste des dépendances:
+"dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6",
+    "@googlemaps/markerclusterer": "^2.5.3",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@googlemaps/typescript-guards": "^2.0.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@vis.gl/react-google-maps": "^0.8.2",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "fast-equals": "^5.0.1",
+    "qs": "^6.12.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "5.0.1",
+    "source-map-loader": "^5.0.0",
+    "tarteaucitronjs": "^1.17.0",
+    "web-vitals": "^2.1.4"
+  },
+
 Démarrer l'application
 Pour démarrer l'application en mode développement, exécutez la commande suivante :
 Si vous utilisez npm :
