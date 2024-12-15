@@ -16,7 +16,7 @@ function Home() {
           <h1 className=' text-white lg:text-8xl md:text-6xl sm:text-5xl text-2xl font-bold uppercase'>nation sound</h1>
         </div>
         <Link to="/informations" className='hover:bg-orange text-white border-solid border-2
-     border-white lg:p-4 lg:text-4xl md:text-2xl sm:text-sm text-xs p-2 absolute z-10 bottom-1/3 left-1/3 rounded uppercase'>plus d'informations</Link>
+     border-white lg:p-4 -m-2 lg:text-4xl md:text-2xl sm:text-sm text-xs p-2 absolute z-10 bottom-1/3 left-1/3 rounded uppercase'>plus d'informations</Link>
       </div>
       <div className='bg-black'>
         < Programmation />
